@@ -1,0 +1,7 @@
+{
+    "MONGODB_URI": "mongodb://localhost:27017/ticket-be",
+    "GOOGLE_CLIENT_ID":"806317494537-qpb937nt3dd5gt2rjl2m73ld792h88h8.apps.googleusercontent.com",
+    "GOOGLE_CLIENT_SECRET":"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",
+    "GOOGLE_CALLBACK_URL": "http://localhost:9000/auth/google/callback",
+    "FRONTEND_URL": "http://localhost:5173"
+}
