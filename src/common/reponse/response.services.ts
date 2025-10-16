@@ -1,16 +1,16 @@
-import { Injectable, HttpStatus } from '@nestjs/common';
+import { Injectable, HttpStatus } from "@nestjs/common";
 import {
   ApiResponse,
   ErrorResponse,
   PaginatedResponse,
-} from './response.interface';
+} from "./response.interface";
 
 @Injectable()
 export class ResponseService {
   success<T>(
     data: T,
-    message: string = 'Success',
-    statusCode: number = HttpStatus.OK,
+    message: string = "Success",
+    statusCode: number = HttpStatus.OK
   ): ApiResponse<T> {
     return {
       success: true,
@@ -21,8 +21,8 @@ export class ResponseService {
     };
   }
   successWithoutData(
-    message: string = 'Success',
-    statusCode: number = HttpStatus.OK,
+    message: string = "Success",
+    statusCode: number = HttpStatus.OK
   ): ApiResponse {
     return {
       success: true,
@@ -37,7 +37,7 @@ export class ResponseService {
     page: number,
     limit: number,
     total: number,
-    message: string = 'Success',
+    message: string = "Success"
   ): PaginatedResponse<T> {
     const totalPages = Math.ceil(total / limit);
 
@@ -60,7 +60,7 @@ export class ResponseService {
     statusCode: number = HttpStatus.INTERNAL_SERVER_ERROR,
     errorCode?: string,
     errors?: string[],
-    details?: any,
+    details?: any
   ): ErrorResponse {
     return {
       success: false,
@@ -74,33 +74,33 @@ export class ResponseService {
   }
   validationError(
     errors: string[],
-    message: string = 'Validation failed',
+    message: string = "Validation failed"
   ): ErrorResponse {
     return this.error(
       message,
       HttpStatus.BAD_REQUEST,
-      'VALIDATION_ERROR',
-      errors,
+      "VALIDATION_ERROR",
+      errors
     );
   }
   unauthorized(
-    message: string = 'Unauthorized',
-    errorCode?: string,
+    message: string = "Unauthorized",
+    errorCode?: string
   ): ErrorResponse {
     return this.error(
       message,
       HttpStatus.UNAUTHORIZED,
-      errorCode || 'UNAUTHORIZED',
+      errorCode || "UNAUTHORIZED"
     );
   }
-  forbidden(message: string = 'Forbidden', errorCode?: string): ErrorResponse {
-    return this.error(message, HttpStatus.FORBIDDEN, errorCode || 'FORBIDDEN');
+  forbidden(message: string = "Forbidden", errorCode?: string): ErrorResponse {
+    return this.error(message, HttpStatus.FORBIDDEN, errorCode || "FORBIDDEN");
   }
 
-  notFound(message: string = 'Not found', errorCode?: string): ErrorResponse {
-    return this.error(message, HttpStatus.NOT_FOUND, errorCode || 'NOT_FOUND');
+  notFound(message: string = "Not found", errorCode?: string): ErrorResponse {
+    return this.error(message, HttpStatus.NOT_FOUND, errorCode || "NOT_FOUND");
   }
-  conflict(message: string = 'Conflict', errorCode?: string): ErrorResponse {
-    return this.error(message, HttpStatus.CONFLICT, errorCode || 'CONFLICT');
+  conflict(message: string = "Conflict", errorCode?: string): ErrorResponse {
+    return this.error(message, HttpStatus.CONFLICT, errorCode || "CONFLICT");
   }
 }

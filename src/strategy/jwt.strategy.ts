@@ -19,13 +19,12 @@
 //   }
 // }
 
-
-import { Injectable } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
-import { PassportStrategy } from '@nestjs/passport';
-import { jwtConstants } from '@src/auth/constants';
-import { ExtractJwt, Strategy } from 'passport-jwt';
-import { Request } from 'express';
+import { Injectable } from "@nestjs/common";
+import { ConfigService } from "@nestjs/config";
+import { PassportStrategy } from "@nestjs/passport";
+import { jwtConstants } from "@src/auth/constants";
+import { ExtractJwt, Strategy } from "passport-jwt";
+import { Request } from "express";
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
